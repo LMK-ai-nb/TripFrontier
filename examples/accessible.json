@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "timetable": {
+    "name": "无障碍 / 接驳路径选择",
+    "stops": [
+      {
+        "id": "A",
+        "name": "宿舍",
+        "min_change": 0,
+        "accessible": true
+      },
+      {
+        "id": "stairs",
+        "name": "楼梯站台",
+        "min_change": 0,
+        "accessible": true
+      },
+      {
+        "id": "ramp",
+        "name": "坡道站台",
+        "min_change": 0,
+        "accessible": true
+      },
+      {
+        "id": "D",
+        "name": "图书馆",
+        "min_change": 0,
+        "accessible": true
+      }
+    ],
+    "trips": [
+      {
+        "id": "quick",
+        "calls": [
+          {
+            "stop": "stairs",
+            "arrival": 29400,
+            "departure": 29400,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "D",
+            "arrival": 30000,
+            "departure": 30000,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      },
+      {
+        "id": "step-free",
+        "calls": [
+          {
+            "stop": "ramp",
+            "arrival": 29520,
+            "departure": 29520,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "D",
+            "arrival": 30600,
+            "departure": 30600,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      }
+    ],
+    "footpaths": [
+      {
+        "id": "stairs-link",
+        "from": "A",
+        "to": "stairs",
+        "duration": 60,
+        "accessible": false
+      },
+      {
+        "id": "ramp-link",
+        "from": "A",
+        "to": "ramp",
+        "duration": 240,
+        "accessible": true
+      }
+    ]
+  },
+  "query": {
+    "from": "A",
+    "to": "D",
+    "departure": 28800,
+    "max_walk": 300,
+    "max_boardings": 2,
+    "accessible": true
+  }
+}

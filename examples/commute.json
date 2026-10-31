@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "timetable": {
+    "name": "通勤 / 少换乘与更早到达",
+    "stops": [
+      {
+        "id": "A",
+        "name": "校园",
+        "min_change": 0,
+        "accessible": true
+      },
+      {
+        "id": "B",
+        "name": "枢纽",
+        "min_change": 120,
+        "accessible": true
+      },
+      {
+        "id": "D",
+        "name": "园区",
+        "min_change": 0,
+        "accessible": true
+      }
+    ],
+    "trips": [
+      {
+        "id": "local",
+        "calls": [
+          {
+            "stop": "A",
+            "arrival": 29100,
+            "departure": 29100,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "B",
+            "arrival": 30000,
+            "departure": 30000,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      },
+      {
+        "id": "connector",
+        "calls": [
+          {
+            "stop": "B",
+            "arrival": 30180,
+            "departure": 30180,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "D",
+            "arrival": 30600,
+            "departure": 30600,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      },
+      {
+        "id": "direct",
+        "calls": [
+          {
+            "stop": "A",
+            "arrival": 29400,
+            "departure": 29400,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "D",
+            "arrival": 31200,
+            "departure": 31200,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      }
+    ],
+    "footpaths": []
+  },
+  "query": {
+    "from": "A",
+    "to": "D",
+    "departure": 28800,
+    "max_walk": 0,
+    "max_boardings": 3
+  }
+}

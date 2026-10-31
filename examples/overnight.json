@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "timetable": {
+    "name": "gtfs / 2026-10-31",
+    "stops": [
+      {
+        "id": "A",
+        "name": "校园",
+        "min_change": 0,
+        "accessible": true
+      },
+      {
+        "id": "B",
+        "name": "换乘站",
+        "min_change": 120,
+        "accessible": true
+      },
+      {
+        "id": "D",
+        "name": "图书馆",
+        "min_change": 0,
+        "accessible": true
+      }
+    ],
+    "trips": [
+      {
+        "id": "local",
+        "calls": [
+          {
+            "stop": "A",
+            "arrival": 85800,
+            "departure": 85800,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "B",
+            "arrival": 86400,
+            "departure": 86400,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      },
+      {
+        "id": "connector",
+        "calls": [
+          {
+            "stop": "B",
+            "arrival": 86520,
+            "departure": 86520,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "D",
+            "arrival": 87000,
+            "departure": 87000,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      },
+      {
+        "id": "late",
+        "calls": [
+          {
+            "stop": "A",
+            "arrival": 86700,
+            "departure": 86700,
+            "pickup": true,
+            "dropoff": true
+          },
+          {
+            "stop": "D",
+            "arrival": 88200,
+            "departure": 88200,
+            "pickup": true,
+            "dropoff": true
+          }
+        ],
+        "accessible": true,
+        "cancelled": false,
+        "delay": 0
+      }
+    ],
+    "footpaths": []
+  },
+  "query": {
+    "from": "A",
+    "to": "D",
+    "departure": 85200,
+    "max_walk": 0,
+    "max_boardings": 3
+  }
+}

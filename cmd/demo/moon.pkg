@@ -1,0 +1,5 @@
+import {
+  "local/tripfrontier" @p,
+}
+
+pkgtype(kind: "executable")
