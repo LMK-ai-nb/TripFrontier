@@ -1,0 +1,12 @@
+_build/
+.mooncakes/
+.repos/
+work/
+artifacts/
+deliverables/
+dist/
+web/engine.js
+web/data/
+web/licenses/
+__pycache__/
+*.tmp

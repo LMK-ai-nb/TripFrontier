@@ -1,0 +1,127 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "local/tripfrontier"
+
+// Values
+pub fn encode_timetable(Timetable) -> String raise PlanError
+
+pub fn query(String, String, Int32, latest? : Int32, max_boardings? : Int32, max_walk? : Int32, accessible? : Bool, max_labels? : Int32, max_work? : Int32) -> Query
+
+pub fn validate(Timetable) -> Unit raise PlanError
+
+pub fn validate_query(Timetable, Query) -> Unit raise PlanError
+
+// Errors
+pub(all) suberror PlanError {
+  PlanError(String)
+} derive(Eq)
+pub fn PlanError::equal(Self, Self) -> Bool
+pub fn PlanError::not_equal(Self, Self) -> Bool
+
+// Types and methods
+pub(all) struct Call {
+  stop : String
+  arrival : Int32
+  departure : Int32
+  pickup : Bool
+  dropoff : Bool
+} derive(Eq, ToJson)
+pub fn Call::equal(Self, Self) -> Bool
+pub fn Call::not_equal(Self, Self) -> Bool
+pub fn Call::to_json(Self) -> Json
+
+pub(all) struct Footpath {
+  id : String
+  from : String
+  to : String
+  duration : Int32
+  accessible : Bool
+} derive(Eq, ToJson)
+pub fn Footpath::equal(Self, Self) -> Bool
+pub fn Footpath::not_equal(Self, Self) -> Bool
+pub fn Footpath::to_json(Self) -> Json
+
+pub(all) struct Journey {
+  arrival : Int32
+  boardings : Int32
+  walked : Int32
+  legs : Array[Leg]
+} derive(Eq, ToJson)
+pub fn Journey::equal(Self, Self) -> Bool
+pub fn Journey::not_equal(Self, Self) -> Bool
+pub fn Journey::to_json(Self) -> Json
+
+pub(all) struct Leg {
+  kind : String
+  id : String
+  from : String
+  to : String
+  departure : Int32
+  arrival : Int32
+  board_index : Int32
+  alight_index : Int32
+} derive(Eq, ToJson)
+pub fn Leg::equal(Self, Self) -> Bool
+pub fn Leg::not_equal(Self, Self) -> Bool
+pub fn Leg::to_json(Self) -> Json
+
+pub(all) struct Query {
+  from : String
+  to : String
+  departure : Int32
+  latest : Int32
+  max_boardings : Int32
+  max_walk : Int32
+  accessible : Bool
+  max_labels : Int32
+  max_work : Int32
+} derive(Eq, ToJson)
+pub fn Query::equal(Self, Self) -> Bool
+pub fn Query::not_equal(Self, Self) -> Bool
+pub fn Query::to_json(Self) -> Json
+
+pub(all) struct Report {
+  schema_version : Int32
+  timetable : String
+  query : Query
+  status : String
+  complete : Bool
+  journeys : Array[Journey]
+  labels : Int32
+  work : Int32
+} derive(ToJson)
+pub fn Report::to_json(Self) -> Json
+
+pub(all) struct Stop {
+  id : String
+  name : String
+  min_change : Int32
+  accessible : Bool
+} derive(Eq, ToJson)
+pub fn Stop::equal(Self, Self) -> Bool
+pub fn Stop::not_equal(Self, Self) -> Bool
+pub fn Stop::to_json(Self) -> Json
+
+pub(all) struct Timetable {
+  name : String
+  stops : Array[Stop]
+  trips : Array[Trip]
+  footpaths : Array[Footpath]
+} derive(Eq, ToJson)
+pub fn Timetable::equal(Self, Self) -> Bool
+pub fn Timetable::not_equal(Self, Self) -> Bool
+pub fn Timetable::to_json(Self) -> Json
+
+pub(all) struct Trip {
+  id : String
+  calls : Array[Call]
+  accessible : Bool
+  cancelled : Bool
+  delay : Int32
+} derive(Eq, ToJson)
+pub fn Trip::equal(Self, Self) -> Bool
+pub fn Trip::not_equal(Self, Self) -> Bool
+pub fn Trip::to_json(Self) -> Json
+
+// Type aliases
+
+// Traits
