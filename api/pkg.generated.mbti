@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "local/tripfrontier/api"
+package "LMK-ai-nb/tripfrontier/api"
 
 // Values
 pub fn route_request(String) -> String

@@ -1,6 +1,6 @@
 # 可执行库使用示例
 
-以下代码随 `moon test` 编译、运行，使用公开接口；模块目前是本地临时命名，不是 Mooncakes 安装地址。
+以下代码随 `moon test` 编译、运行，使用 `LMK-ai-nb/tripfrontier` 的公开接口。
 
 ```mbt check
 ///|

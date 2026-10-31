@@ -1,5 +1,5 @@
 import {
-  "local/tripfrontier" @planner,
+  "LMK-ai-nb/tripfrontier" @planner,
 }
 
 options(

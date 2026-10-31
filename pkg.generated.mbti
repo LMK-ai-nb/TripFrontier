@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "local/tripfrontier"
+package "LMK-ai-nb/tripfrontier"
 
 // Values
 pub fn decode_request(String) -> (Timetable, Query) raise PlanError

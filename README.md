@@ -4,7 +4,9 @@
 
 TripFrontier 是独立的 MoonBit 离线乘客行程规划库。给定一个服务日的班次、站点换乘时间、显式步行接驳和出行约束，输出在 **到达时间、上车次数、接驳用时** 上互不支配的完整行程。取消或延误班次后可从源时刻表重新计算。
 
-本地开发版本：**未建立远程仓库、未推送、未发布、未报名**。最终参赛 GitHub 账号尚未指定，模块临时命名为 `local/tripfrontier`，不是 Mooncakes 安装地址；本地提交使用明确的开发占位作者身份。代码使用 AI 辅助开发，不能替代参赛者的理解与独立申报。
+维护者与参赛者：**李明坤 / LMK-ai-nb**，个人参赛。代码使用 AI 辅助开发，维护者负责理解、验证与解释。未公开草稿的身份绑定、原始开发记录和同账户旧项目关系见 [开发来源](docs/AUTHORSHIP.md)。
+
+[GitHub](https://github.com/LMK-ai-nb/TripFrontier) · [在线工作台](https://lmk-ai-nb.github.io/TripFrontier/) · [Mooncakes](https://mooncakes.io/docs/LMK-ai-nb/tripfrontier) · [CI](https://github.com/LMK-ai-nb/TripFrontier/actions/workflows/ci.yml)
 
 ![本地行程工作台](docs/assets/workbench.png)
 
@@ -48,7 +50,7 @@ node scripts/serve.mjs
 
 ## 作为库嵌入
 
-源码包名暂为 `local/tripfrontier`。使用公开 API 的可执行示例在 [API.mbt.md](API.mbt.md)，生成签名在 [pkg.generated.mbti](pkg.generated.mbti)。`cmd/demo` 是从单独消费包导入公开接口的真实用法。
+模块名为 `LMK-ai-nb/tripfrontier`。使用公开 API 的可执行示例在 [API.mbt.md](API.mbt.md)，生成签名在 [pkg.generated.mbti](pkg.generated.mbti)。`cmd/demo` 是从单独消费包导入公开接口的真实用法。发布版本及实际下载/CI 证据以 [发布记录](docs/RELEASE.md) 为准。
 
 | 接口 | 作用 |
 | --- | --- |
@@ -82,7 +84,7 @@ python scripts/verify.py --browser
 
 当前验证项：24 个 MoonBit 测试（含可执行公开 API 文档）、7 个 Node CLI/桥接集成测试、7 个 Python GTFS 测试；240 组小网络对照独立穷举 oracle；Chromium 检查延误边界、无障碍、午夜、报告下载、注入文本和 390px 布局。
 
-`.github/workflows/ci.yml` 配置三操作系统/四目标检查、测试与构建，以及 CLI、GTFS、oracle、Linux 浏览器检查。**因不推送，尚未运行远程 CI。**
+`.github/workflows/ci.yml` 配置三操作系统/四目标检查、测试与构建，以及 CLI、GTFS、oracle、Linux 浏览器检查。实际远程结果可从上方 CI 链接与发布记录核对，不将配置文件当作成功运行证据。
 
 `node scripts/benchmark.mjs` 可复现合成基准。当前 40站、192班次、1128停站、39接驳的一次查询，Windows / Node 24.22.1 / i7-14650HX，7 个样本中位 4.0916ms，包含 JSON 解析、校验、索引、求解、见证、序列化与结果解析。不外推为全国规模、真实 feed 吞吐或优于成熟算法的结论。
 
@@ -90,6 +92,6 @@ python scripts/verify.py --browser
 
 容量：512站、2048班次、20000停站、4096接驳；最多100000历史标签、2000000候选操作。受资源限制的同步离线服务日内核；不做道路地理推断、票价、完整 GTFS/GTFS-RT、多服务日合并、车辆贯通、arrive-by 或生产安全认证。未知数据不被包装为“已支持”。
 
-MIT；标准库许可与 NOTICE 保留，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。独立新目录、根历史和业务实现，明确披露与旧项目无业务复用。最终实际 GitHub 账号待指定。
+MIT；标准库许可与 NOTICE 保留，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。独立新目录、根历史和业务实现，明确披露与 TideWeave 无业务复用。GitHub 与 Mooncakes 账户均核实为 LMK-ai-nb。
 
-本地技术准备不等于完成官方验收：尚需真实账号/命名、公开仓库、远程 CI、Mooncakes 发布、本人独立写申报书和完成报名。十月规则核对、来源、状态与疑点在 [RULES_2026-10-31.md](docs/RULES_2026-10-31.md)；独立写作仅提供 [事实清单](docs/FACTS_FOR_AUTHOR.md) 和 [空白提纲](docs/APPLICATION_OUTLINE.md)。
+技术发布不等于完成官方报名或通过审核。十月规则核对、来源、状态与疑点在 [RULES_2026-10-31.md](docs/RULES_2026-10-31.md)。依据李明坤反馈的工作人员口径，本次允许 AI 辅助准备申报材料，由李明坤复核后自行提交；正式报名资料不进入公开仓库。

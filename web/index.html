@@ -3,7 +3,7 @@
 <meta name="description" content="TripFrontier：离线时刻表行程规划，比较到达时间、乘车次数与步行接驳。">
 <title>TripFrontier · 给每一次换乘留出时间</title><link rel="icon" href="mark.svg"><link rel="stylesheet" href="style.css">
 </head><body>
-<header class="topbar"><a class="brand" href="./"><img src="mark.svg" alt="" width="31" height="31"><span>TripFrontier</span></a><span class="top-subtitle">离线时刻表 · 行程规划实验室</span><span class="local-tag"><i></i> 本地预览 · 未发布</span></header>
+<header class="topbar"><a class="brand" href="./"><img src="mark.svg" alt="" width="31" height="31"><span>TripFrontier</span></a><span class="top-subtitle">离线时刻表 · 行程规划实验室</span><a class="local-tag" href="https://github.com/LMK-ai-nb/TripFrontier"><i></i> LMK-ai-nb · v0.1.0 ↗</a></header>
 <main>
   <section class="hero"><div class="hero-copy"><span class="eyebrow">A TIMETABLE IS MORE THAN A STATIC GRAPH</span><h1>给每一次换乘，<br>留出<span>真实的时间。</span></h1><p>早到一点，少换一次，或少走一段。<br>从一份时刻表里，找到值得比较的出行选择。</p></div><div class="hero-art" aria-hidden="true"><span class="route-caption">DEPARTURE → CONNECTION → ARRIVAL</span><svg viewBox="0 0 460 200"><path d="M20 140H150Q180 140 180 110V75Q180 45 210 45H430" fill="none" stroke="#264c55" stroke-width="18"/><path d="M20 140H320Q350 140 350 110V75Q350 45 380 45H430" fill="none" stroke="#daaa69" stroke-width="7"/><circle cx="55" cy="140" r="13" fill="#f6f5ef" stroke="#264c55" stroke-width="5"/><circle cx="180" cy="95" r="13" fill="#f6f5ef" stroke="#264c55" stroke-width="5"/><circle cx="420" cy="45" r="13" fill="#f6f5ef" stroke="#264c55" stroke-width="5"/><text x="38" y="182">出发</text><text x="125" y="27">接驳与等车</text><text x="396" y="88">到达</text></svg><div class="art-note">不止一条最短路。<b>而是一组可以权衡的行程。</b></div></div></section>
   <section class="scenario-tabs" aria-label="选择使用场景"><button class="selected" data-example="commute.json"><span>01</span><b>通勤与换乘</b><small>延误一分钟，也可能错过下一班</small></button><button data-example="accessible.json"><span>02</span><b>无障碍接驳</b><small>按明确的站点、车辆、路径数据筛选</small></button><button data-example="overnight.json"><span>03</span><b>跨午夜班车</b><small>服务日延伸到 24:10，照常计算</small></button></section>
@@ -28,5 +28,5 @@
       <details class="source-panel"><summary>查看或使用自己的时刻表 <span>JSON ↗</span></summary><div class="source-body"><label for="source">数据只在本机计算。导入的是一个服务日的明确班次，不自动推断实时路况。</label><textarea id="source" spellcheck="false"></textarea><div class="actions"><button id="apply-source" class="secondary">校验并载入</button><button id="export" class="secondary">导出当前报告 ↓</button><span id="work-count"></span></div></div></details>
     </section>
   </div>
-  <footer><b>TripFrontier</b><span>MoonBit 内核 / 无在线地图依赖 / 合成示例</span><span>本地开发版 · MIT</span></footer>
+  <footer><b>TripFrontier</b><span>MoonBit 内核 / 无在线地图依赖 / 合成示例</span><span>李明坤 · LMK-ai-nb · MIT</span></footer>
 </main><script type="module" src="app.js"></script></body></html>

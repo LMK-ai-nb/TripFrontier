@@ -2,9 +2,9 @@
 
 <!-- 空白提纲，不是正式正文。Markdown 一页以内；请本人理解代码后独立撰写。不要直接把 AI 事实材料拼成本文。 -->
 
-姓名：
-实际 GitHub ID：
-参赛方向：
+姓名：李明坤
+实际 GitHub ID：LMK-ai-nb
+参赛方向：新项目申报—参与季度评选
 
 ## 项目名称与简介
 
@@ -32,4 +32,4 @@
 
 ## 公开仓库链接
 
-<!-- 本地版尚无公开仓库，推送并核对真实 owner/default branch 后填写。 -->
+https://github.com/LMK-ai-nb/TripFrontier
