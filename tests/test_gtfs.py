@@ -36,5 +36,10 @@ class ImportTests(unittest.TestCase):
     def test_unsupported_transfer_rules_reject(self):
         path=self.fixture();(path/'transfers.txt').write_text('from_stop_id,to_stop_id,transfer_type,min_transfer_time\nB,B,3,0\n',encoding='utf-8')
         with self.assertRaises(g.ImportError):g.load_gtfs(path,'2026-10-31')
+    def test_empty_stops_and_self_parent_reject(self):
+        path=self.fixture();(path/'stops.txt').write_text('stop_id,stop_name\n',encoding='utf-8')
+        with self.assertRaises(g.ImportError):g.load_gtfs(path,'2026-10-31')
+        path=self.fixture();(path/'stops.txt').write_text('stop_id,stop_name,parent_station\nA,A,A\nB,B,\nD,D,\n',encoding='utf-8')
+        with self.assertRaises(g.ImportError):g.load_gtfs(path,'2026-10-31')
 
 if __name__=='__main__':unittest.main()

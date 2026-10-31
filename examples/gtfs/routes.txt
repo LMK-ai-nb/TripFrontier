@@ -1,0 +1,4 @@
+route_id,agency_id,route_short_name,route_type
+R1,SYNTHETIC,Local,3
+R2,SYNTHETIC,Connector,3
+R3,SYNTHETIC,Special,3

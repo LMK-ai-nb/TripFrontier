@@ -89,7 +89,7 @@ def load_gtfs(directory, service_date, change=0):
             else:active.discard(sid)
     stops=unique(read_table(root,'stops.txt',('stop_id','stop_name')),'stop_id','stops')
     trips=unique(read_table(root,'trips.txt',('trip_id','service_id','route_id')),'trip_id','trips')
-    if len(stops)>512:raise ImportError('subset limit: 512 stops')
+    if not 1<=len(stops)<=512:raise ImportError('subset limit: 1..512 stops')
     for name in ['frequencies.txt','pathways.txt']:
         if read_table(root,name,optional=True):raise ImportError(name+' semantics are not supported by this adapter')
     agency=read_table(root,'agency.txt',optional=True)
@@ -100,7 +100,10 @@ def load_gtfs(directory, service_date, change=0):
         location=s.get('location_type','') or '0'
         if location not in {'0','1'}:raise ImportError('only stop/platform and station locations are supported')
         parent=s.get('parent_station','')
-        if parent and parent not in stops:raise ImportError('unknown parent station')
+        if parent and (parent not in stops or parent==sid):raise ImportError('unknown or self-referencing parent station')
+        if parent and ((stops[parent].get('location_type','') or '0')!='1' or location=='1'):
+            raise ImportError('parent must be a station; nested stations unsupported')
+        if len(s['stop_name'])>256:raise ImportError('stop name exceeds core limit')
         access=flag(s,'wheelchair_boarding')
         if access=='0' and parent:access=flag(stops[parent],'wheelchair_boarding')
         output_stops.append({'id':sid,'name':s['stop_name'],'min_change':change,'accessible':access=='1'})
