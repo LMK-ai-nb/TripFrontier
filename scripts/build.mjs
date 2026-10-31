@@ -1,0 +1,11 @@
+import {spawnSync} from 'node:child_process';
+import {mkdirSync,copyFileSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+const root=resolve(import.meta.dirname,'..');
+const run=spawnSync(process.platform==='win32'?'moon.exe':'moon',['build','api','--target','js','--release','--deny-warn'],{cwd:root,stdio:'inherit'});
+if(run.error||run.status!==0)process.exit(2);
+for(const p of ['dist','web','web/data','web/licenses','dist/licenses'])mkdirSync(resolve(root,p),{recursive:true});
+for(const p of ['dist/engine.js','web/engine.js'])copyFileSync(resolve(root,'_build/js/release/build/api/api.js'),resolve(root,p));
+for(const name of readdirSync(resolve(root,'examples')).filter(f=>f.endsWith('.json')))copyFileSync(resolve(root,'examples',name),resolve(root,'web/data',name));
+for(const folder of ['web/licenses','dist/licenses'])for(const name of ['LICENSE','NOTICE'])copyFileSync(resolve(root,`third_party/MoonBit-core-${name}.txt`),resolve(root,folder,`MoonBit-core-${name}.txt`));
+console.log('Built shared MoonBit routing core.');
