@@ -4,6 +4,8 @@ package "local/tripfrontier"
 // Values
 pub fn encode_timetable(Timetable) -> String raise PlanError
 
+pub fn plan(Timetable, Query) -> Report raise PlanError
+
 pub fn query(String, String, Int32, latest? : Int32, max_boardings? : Int32, max_walk? : Int32, accessible? : Bool, max_labels? : Int32, max_work? : Int32) -> Query
 
 pub fn validate(Timetable) -> Unit raise PlanError
