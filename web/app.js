@@ -15,8 +15,10 @@ function draw(journey){
   const panel=$('diagram');panel.replaceChildren();
   if(!journey){panel.append(node('p','在给定班次和约束中没有可行行程。','empty'));return;}
   const legs=journey.legs,points=[current.query.from,...legs.map(l=>l.to)];
-  const s=svg('svg',{viewBox:'0 0 670 124',role:'img','aria-label':'所选行程的接驳和乘车示意图'});panel.append(s);
-  const x=i=>45+(points.length===1?0:i/(points.length-1)*580);
+  const narrow=window.matchMedia('(max-width:600px)').matches;
+  const width=narrow?340:670,padding=narrow?30:45;
+  const s=svg('svg',{viewBox:`0 0 ${width} 124`,role:'img','aria-label':'所选行程的接驳和乘车示意图'});panel.append(s);
+  const x=i=>padding+(points.length===1?0:i/(points.length-1)*(width-padding*2));
   legs.forEach((l,i)=>{
     s.append(svg('line',{x1:x(i),x2:x(i+1),y1:56,y2:56,stroke:l.kind==='walk'?'#9fae8c':'#315c63','stroke-width':l.kind==='walk'?3:7,'stroke-dasharray':l.kind==='walk'?'5 5':''}));
     s.append(svg('text',{x:(x(i)+x(i+1))/2,y:29,'text-anchor':'middle'},l.kind==='walk'?`接驳 ${l.arrival-l.departure}s`:l.id));
@@ -52,13 +54,17 @@ function render(){
 }
 function load(source){
   const result=JSON.parse(route_request(source));
-  if(result.error){error(result.error.message);return;}
+  if(result.error){base=null;error(result.error.message);return;}
   base=JSON.parse(source);current=structuredClone(base);report=result;selected=0;
   for(const id of ['origin','destination']){$(id).replaceChildren();for(const s of base.timetable.stops){const option=node('option',s.name||s.id);option.value=s.id;$(id).append(option);}}
   $('origin').value=result.query.from;$('destination').value=result.query.to;$('departure').value=time(result.query.departure);
   $('boardings').value=result.query.max_boardings;$('walk-budget').value=result.query.max_walk;$('access').checked=result.query.accessible;
   $('trip').replaceChildren();for(const t of base.timetable.trips){const option=node('option',t.id);option.value=t.id;$('trip').append(option);}
-  $('delay').value=0;$('cancel').checked=false;render();
+  const firstUpdate=base.scenario?.updates?.[0];
+  if(firstUpdate)$('trip').value=firstUpdate.id;
+  const original=base.timetable.trips.find(t=>t.id===$('trip').value);
+  $('delay').value=firstUpdate?.delay??original?.delay??0;
+  $('cancel').checked=firstUpdate?.cancelled??original?.cancelled??false;render();
 }
 function calculate(){
   if(!base)return;

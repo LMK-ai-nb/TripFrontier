@@ -37,7 +37,7 @@ pub(all) struct Footpath {
 } derive(Eq, ToJson)
 
 ///|
-/// Functions validate and detach this caller-owned value before use.
+/// Functions validate this caller-owned value and do not mutate it.
 pub(all) struct Timetable {
   name : String
   stops : Array[Stop]

@@ -24,7 +24,7 @@
       <div class="metrics"><div><small>最早到达</small><b id="earliest">—</b></div><div><small>非支配方案</small><b id="alternatives">—</b></div><div><small>时刻表班次</small><b id="trip-count">—</b></div><div><small>搜索状态</small><b id="search-state">—</b></div></div>
       <div class="route-panel"><div class="route-panel-title"><span>所选行程 · 接驳示意</span><small>线路示意，无地理坐标</small></div><div id="diagram"></div></div>
       <div id="journeys" class="journeys"></div>
-      <p class="frontier-note">结果比较到达时间、上车次数和接驳用时。相同目标值保留一个行程；没有方案在三项上同时优于另一方案。</p>
+      <p class="frontier-note">保留在到达时间、上车次数、接驳用时之间无法互相取代的方案；相同目标值只展示一条行程。</p>
       <details class="source-panel"><summary>查看或使用自己的时刻表 <span>JSON ↗</span></summary><div class="source-body"><label for="source">数据只在本机计算。导入的是一个服务日的明确班次，不自动推断实时路况。</label><textarea id="source" spellcheck="false"></textarea><div class="actions"><button id="apply-source" class="secondary">校验并载入</button><button id="export" class="secondary">导出当前报告 ↓</button><span id="work-count"></span></div></div></details>
     </section>
   </div>
