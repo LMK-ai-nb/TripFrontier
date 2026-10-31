@@ -1,6 +1,6 @@
-# 本地验证与未完成项 — 2026-10-31
+# 技术验证与发布核对 — 2026-10-31
 
-结论：本地版本能运行、核心路径和有界正确性有证据；**不是“已通过初审/官方验收”**。按用户要求暂不推送，公开仓库、真实账号/命名、远程 CI 和 Mooncakes 发布仍未完成。
+结论：本地检查和三平台四目标远程 CI 均已通过，维护者与发布账户已核实为李明坤 / LMK-ai-nb。技术结果不等于已通过初审或官方验收；发布与独立消费证据见 RELEASE.md。
 
 ## 实际环境
 
@@ -34,15 +34,15 @@ oracle 不使用主实现的支配标签剪枝：枚举资源/时间内所有可
 
 ## 已尝试但环境不具备
 
-实际命令：`moon build --target native --deny-warn`。返回 1，错误为 Windows 后端需要 MSVC cl.exe/clang-cl.exe 驱动、C++ Build Tools 和 Windows SDK。本机没有这些工具；未宣称 native 执行通过。已配置的 Windows CI 会初始化 MSVC，但本轮没有推送，因此远程 native 结果未知。
+实际命令：`moon build --target native --deny-warn`。返回 1，错误为 Windows 后端需要 MSVC cl.exe/clang-cl.exe 驱动、C++ Build Tools 和 Windows SDK。本机没有这些工具；未宣称 native 执行通过。远程 Windows CI 已初始化 MSVC 并通过 native 检查、测试和构建；Linux/macOS 的 native 也已通过。本机缺 SDK 的事实与远程结果分别记录，不混淆为本机成功。
 
 ## 初审材料与最终验收差距
 
 1. 独立性材料和真实可运行功能已具备；新项目题目是否足以通过初审仍由组委会判定。不能用本地测试推导初审通过。
 2. 本地 Git 历史含真实的功能、测试、适配、展示与文档里程碑，没有空提交。数量不代替官方“有效 commits”判定。
-3. 模块临时为 local/tripfrontier，未设置 repository；`moon package` 会提示缺 repository。这是先不推送/账号待定的真实状态，发布前必须改成实际值并核对贡献者身份。
-4. 没有 origin、GitHub 公开 URL、远程默认分支或远程 CI 成绩；没有 Mooncakes 发布/独立 registry 下载结果。
-5. 本人正式申报书、实际联系方式/往届信息、诚信承诺、提交回执、入群均需参赛者完成。事实材料和空白提纲不能冒充本人申报正文。
+3. 模块已绑定 LMK-ai-nb/tripfrontier，repository 为 https://github.com/LMK-ai-nb/TripFrontier；初始未公开草稿绑定身份的过程见 AUTHORSHIP.md，原始内容、时间和开发顺序保留。
+4. GitHub 仓库公开，实际默认分支 main；远程 CI 运行 41175996318 对应提交 15e64d0e26fc2abfb89b260142e31029401d159a，Windows/macOS/Linux 三个平台全部成功，覆盖 wasm/wasm-gc/js/native。Mooncakes 发布与独立下载的最终结果见 RELEASE.md。
+5. 已按李明坤反馈的工作人员口径准备 AI 辅助申报材料，仅列李明坤一位参赛者；联系方式在本地私有文件中。复核、诚信承诺、提交回执和入群仍由李明坤本人完成。
 6. 日期、次数、换账号口径和仍含九月日期的章程差异见 RULES_2026-10-31.md；本轮按用户已确认的今晚24点安排，不替主办方认定资格。
 
 ## 基准
