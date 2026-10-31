@@ -8,6 +8,8 @@ pub fn plan(Timetable, Query) -> Report raise PlanError
 
 pub fn query(String, String, Int32, latest? : Int32, max_boardings? : Int32, max_walk? : Int32, accessible? : Bool, max_labels? : Int32, max_work? : Int32) -> Query
 
+pub fn scenario(Timetable, Array[TripUpdate], closed_paths? : Array[String]) -> Timetable raise PlanError
+
 pub fn validate(Timetable) -> Unit raise PlanError
 
 pub fn validate_query(Timetable, Query) -> Unit raise PlanError
@@ -125,6 +127,15 @@ pub(all) struct Trip {
 pub fn Trip::equal(Self, Self) -> Bool
 pub fn Trip::not_equal(Self, Self) -> Bool
 pub fn Trip::to_json(Self) -> Json
+
+pub(all) struct TripUpdate {
+  id : String
+  delay : Int32
+  cancelled : Bool
+} derive(Eq, ToJson)
+pub fn TripUpdate::equal(Self, Self) -> Bool
+pub fn TripUpdate::not_equal(Self, Self) -> Bool
+pub fn TripUpdate::to_json(Self) -> Json
 
 // Type aliases
 
