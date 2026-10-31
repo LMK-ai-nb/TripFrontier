@@ -1,0 +1,4 @@
+route_id,service_id,trip_id,wheelchair_accessible
+R1,DAILY,local,1
+R2,DAILY,connector,1
+R3,SPECIAL,late,1

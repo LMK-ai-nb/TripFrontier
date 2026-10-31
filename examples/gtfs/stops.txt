@@ -1,0 +1,4 @@
+stop_id,stop_name,wheelchair_boarding
+A,校园,1
+B,换乘站,1
+D,图书馆,1
