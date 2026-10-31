@@ -12,6 +12,8 @@ pub fn validate(Timetable) -> Unit raise PlanError
 
 pub fn validate_query(Timetable, Query) -> Unit raise PlanError
 
+pub fn verify_journey(Timetable, Query, Journey) -> Bool raise PlanError
+
 // Errors
 pub(all) suberror PlanError {
   PlanError(String)
