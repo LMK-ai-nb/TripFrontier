@@ -1,0 +1,7 @@
+import {
+  "local/tripfrontier" @planner,
+}
+
+options(
+  link: { "js": { "exports": [ "route_request" ], "format": "esm" } },
+)
